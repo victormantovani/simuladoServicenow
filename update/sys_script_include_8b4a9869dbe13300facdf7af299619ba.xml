@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_356828_simulado.GetName</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>GetName</name>
+        <script><![CDATA[var GetName = Class.create();
+GetName.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	getEmail: function() {
+		var userRecord = new GlideRecord("sys_user");
+		userRecord.get(this.getParameter('sysparm_userID'));
+		return userRecord.name + '';
+	},
+    type: 'GetName'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-05-20 22:09:51</sys_created_on>
+        <sys_id>8b4a9869dbe13300facdf7af299619ba</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>GetName</sys_name>
+        <sys_package display_value="Simulado" source="x_356828_simulado">508e8f11db213300facdf7af299619b8</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Simulado">508e8f11db213300facdf7af299619b8</sys_scope>
+        <sys_update_name>sys_script_include_8b4a9869dbe13300facdf7af299619ba</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-05-20 22:09:51</sys_updated_on>
+    </sys_script_include>
+</record_update>

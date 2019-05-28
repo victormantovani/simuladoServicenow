@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_356828_simulado.AddressCepUtils</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>AddressCepUtils</name>
+        <script><![CDATA[var AddressCepUtils = Class.create();
+AddressCepUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	getAddress: function(){
+		
+		var cep = this.getParameter('sysparm_cep_value');
+		
+		var res;
+		
+		try { 
+			 var r = new sn_ws.RESTMessageV2('x_356828_simulado.Consulta CEP', 'GetAddress');
+			 r.setStringParameterNoEscape('CEP', cep);
+			 var response = r.execute();
+			 var responseBody = response.getBody();
+			
+			 res = JSON.parse(responseBody);
+			res = res.logradouro +", "+ res.bairro +" - "+ res.cidade + ", " + res.estado;
+			
+			return res;
+		}
+		catch(ex) {
+			 res = ex.message;
+		}
+	},
+    type: 'AddressCepUtils'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2019-05-21 12:48:24</sys_created_on>
+        <sys_id>4c106b21dbe93300facdf7af29961979</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>AddressCepUtils</sys_name>
+        <sys_package display_value="Simulado" source="x_356828_simulado">508e8f11db213300facdf7af299619b8</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Simulado">508e8f11db213300facdf7af299619b8</sys_scope>
+        <sys_update_name>sys_script_include_4c106b21dbe93300facdf7af29961979</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2019-05-21 13:07:53</sys_updated_on>
+    </sys_script_include>
+</record_update>
